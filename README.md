@@ -28,3 +28,8 @@
 1. paco 모든 테스트 통과 - Mandantory
 2. paco -s Null check -> Multiline nl 부분 확인하기 (윈도우 환경에서 오류 확인 불가)
 3. 예외처리 (Null- check) 모두 해줬는데 오류가 발생하는 원인이 무엇일까..
+
+### 통과 후
+23.11.13일 3번 오류사항 해결
+원인 : nextline의 생성 실패 시, static 변수 tmp는 free가 되나, 새로 생성된 new_tmp가 malloc이 되면, return 값은 제대로 나오나, memory leak이 발생
+해결 방법 : GNL에서 해당 사항이 발생하면 malloc한 메모리 공간을 free한 후, return을 한다.
